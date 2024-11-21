@@ -3,18 +3,8 @@ const router = express.Router({mergeParams: true}); //to get id from url
 const catchAsync = require("../helpers/catchAsync");
 const Campground = require("../models/campground");
 const Review = require("../models/review");
-const {reviewSchema} = require("../schemas");
 const ExpressError = require("../helpers/expressError");
-
-const validateReview = (req, res, next) => {
-    const {error} = reviewSchema.validate(req.body);
-    if (error){
-        const msg = error.details.map(el => el.message).join(",")
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
+const {isLoggedIn, isAuthor, validateReview} = require("../middleware");
 
 router.post("/", validateReview, catchAsync(async (req, res) =>{
     const campground = await Campground.findById(req.params.id);
