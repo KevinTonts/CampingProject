@@ -27,9 +27,13 @@ const seedDB = async () => {
             author: "673f12b97ce39d3256758c12",
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: `https://picsum.photos/400?random=${Math.random()}`,
             description: `Just something important`,
-            price
+            price,
+            images: {
+                url: 'https://res.cloudinary.com/df5mssvlf/image/upload/v1732504745/CampingApp/jvp30w30gi5olpjnsfit.png',
+                filename: 'CampingApp/jvp30w30gi5olpjnsfit',
+            }
+
         })
         await camp.save();
     }
