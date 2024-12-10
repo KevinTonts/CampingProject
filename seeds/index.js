@@ -24,7 +24,7 @@ const seedDB = async () => {
         const random100 = Math.floor(Math.random() * 100);
         const price = Math.floor(Math.random() * 30) + 10;
         const camp = new Campground({
-            author: "673f12b97ce39d3256758c12", //your user id
+            author: "673f12b97ce39d3256758c12", //your user id if u want to edit seeded campgrounds
             location: `${cities[random100].city}, ${cities[random100].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             description: `Just something important`,
